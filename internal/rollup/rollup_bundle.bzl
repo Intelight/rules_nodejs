@@ -520,8 +520,8 @@ def _rollup_bundle(ctx):
         # Generate the bundles
         rollup_config = write_rollup_config(ctx)
         es2015_map = run_rollup(ctx, _collect_es2015_sources(ctx), rollup_config, ctx.outputs.build_es2015)
-        es2015_min_map = run_terser(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es2015_min, config_name = ctx.label.name + "es2015_min", in_source_map = es2015_map)
-        es2015_min_debug_map = run_terser(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es2015_min_debug, debug = True, config_name = ctx.label.name + "es2015_min_debug", in_source_map = es2015_map)
+        # es2015_min_map = run_terser(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es2015_min, config_name = ctx.label.name + "es2015_min", in_source_map = es2015_map)
+        # es2015_min_debug_map = run_terser(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es2015_min_debug, debug = True, config_name = ctx.label.name + "es2015_min_debug", in_source_map = es2015_map)
         # _run_tsc(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es5)
         # es5_min_map = run_terser(ctx, ctx.outputs.build_es5, ctx.outputs.build_es5_min)
         # es5_min_debug_map = run_terser(ctx, ctx.outputs.build_es5, ctx.outputs.build_es5_min_debug, debug = True)
@@ -541,8 +541,8 @@ def _rollup_bundle(ctx):
         output_group = OutputGroupInfo(
             # cjs = depset([ctx.outputs.build_cjs, cjs_map]),
             es2015 = depset([ctx.outputs.build_es2015, es2015_map]),
-            es2015_min = depset([ctx.outputs.build_es2015_min, es2015_min_map]),
-            es2015_min_debug = depset([ctx.outputs.build_es2015_min_debug, es2015_min_debug_map]),
+            # es2015_min = depset([ctx.outputs.build_es2015_min, es2015_min_map]),
+            # es2015_min_debug = depset([ctx.outputs.build_es2015_min_debug, es2015_min_debug_map]),
             # es5 = depset([ctx.outputs.build_es5]),
             # es5_min = depset([ctx.outputs.build_es5_min, es5_min_map]),
             # es5_min_debug = depset([ctx.outputs.build_es5_min_debug, es5_min_debug_map]),
@@ -801,8 +801,8 @@ ROLLUP_ATTRS = {
 ROLLUP_OUTPUTS = {
     # "build_cjs": "%{name}.cjs.js",
     "build_es2015": "%{name}.es2015.js",
-    "build_es2015_min": "%{name}.min.es2015.js",
-    "build_es2015_min_debug": "%{name}.min_debug.es2015.js",
+    # "build_es2015_min": "%{name}.min.es2015.js",
+    # "build_es2015_min_debug": "%{name}.min_debug.es2015.js",
     # "build_es5": "%{name}.js",
     # "build_es5_min": "%{name}.min.js",
     # "build_es5_min_debug": "%{name}.min_debug.js",
