@@ -196,6 +196,7 @@ const config = {
     sourcemaps(), rollupJson({preferConst: true})
   ]),
   output: {
+    strict: false,
     banner,
     format: 'TMPL_output_format',
   },
