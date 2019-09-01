@@ -799,18 +799,18 @@ ROLLUP_ATTRS = {
 }
 
 ROLLUP_OUTPUTS = {
-    "build_cjs": "%{name}.cjs.js",
+    # "build_cjs": "%{name}.cjs.js",
     "build_es2015": "%{name}.es2015.js",
     "build_es2015_min": "%{name}.min.es2015.js",
     "build_es2015_min_debug": "%{name}.min_debug.es2015.js",
-    "build_es5": "%{name}.js",
-    "build_es5_min": "%{name}.min.js",
-    "build_es5_min_debug": "%{name}.min_debug.js",
-    "build_es5_umd": "%{name}.es5umd.js",
-    "build_es5_umd_min": "%{name}.min.es5umd.js",
-    "build_umd": "%{name}.umd.js",
-    "build_umd_min": "%{name}.min.umd.js",
-    "explore_html": "%{name}.explore.html",
+    # "build_es5": "%{name}.js",
+    # "build_es5_min": "%{name}.min.js",
+    # "build_es5_min_debug": "%{name}.min_debug.js",
+    # "build_es5_umd": "%{name}.es5umd.js",
+    # "build_es5_umd_min": "%{name}.min.es5umd.js",
+    # "build_umd": "%{name}.umd.js",
+    # "build_umd_min": "%{name}.min.umd.js",
+    # "explore_html": "%{name}.explore.html",
 }
 
 rollup_bundle = rule(
