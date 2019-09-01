@@ -171,8 +171,7 @@ const config = {
     // Always fail on warnings, assuming we don't know which are harmless.
     // We can add exclusions here based on warning.code, if we discover some
     // types of warning should always be ignored under bazel.
-    console.log(warning.message);
-    // throw new Error(warning.message);
+    throw new Error(warning.message);
   },
   plugins: [TMPL_additional_plugins].concat([
     {
@@ -197,7 +196,6 @@ const config = {
     sourcemaps(), rollupJson({preferConst: true})
   ]),
   output: {
-    strict: false,
     banner,
     format: 'TMPL_output_format',
   },
