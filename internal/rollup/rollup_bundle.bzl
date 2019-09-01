@@ -522,34 +522,34 @@ def _rollup_bundle(ctx):
         es2015_map = run_rollup(ctx, _collect_es2015_sources(ctx), rollup_config, ctx.outputs.build_es2015)
         es2015_min_map = run_terser(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es2015_min, config_name = ctx.label.name + "es2015_min", in_source_map = es2015_map)
         es2015_min_debug_map = run_terser(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es2015_min_debug, debug = True, config_name = ctx.label.name + "es2015_min_debug", in_source_map = es2015_map)
-        _run_tsc(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es5)
-        es5_min_map = run_terser(ctx, ctx.outputs.build_es5, ctx.outputs.build_es5_min)
-        es5_min_debug_map = run_terser(ctx, ctx.outputs.build_es5, ctx.outputs.build_es5_min_debug, debug = True)
+        # _run_tsc(ctx, ctx.outputs.build_es2015, ctx.outputs.build_es5)
+        # es5_min_map = run_terser(ctx, ctx.outputs.build_es5, ctx.outputs.build_es5_min)
+        # es5_min_debug_map = run_terser(ctx, ctx.outputs.build_es5, ctx.outputs.build_es5_min_debug, debug = True)
 
-        cjs_rollup_config = write_rollup_config(ctx, filename = "_%s_cjs.rollup.conf.js", output_format = "cjs")
-        cjs_map = run_rollup(ctx, _collect_es2015_sources(ctx), cjs_rollup_config, ctx.outputs.build_cjs)
+        # cjs_rollup_config = write_rollup_config(ctx, filename = "_%s_cjs.rollup.conf.js", output_format = "cjs")
+        # cjs_map = run_rollup(ctx, _collect_es2015_sources(ctx), cjs_rollup_config, ctx.outputs.build_cjs)
 
-        umd_rollup_config = write_rollup_config(ctx, filename = "_%s_umd.rollup.conf.js", output_format = "umd")
-        umd_map = run_rollup(ctx, _collect_es2015_sources(ctx), umd_rollup_config, ctx.outputs.build_umd)
-        umd_min_map = run_terser(ctx, ctx.outputs.build_umd, ctx.outputs.build_umd_min, config_name = ctx.label.name + "umd_min", in_source_map = umd_map)
-        _run_tsc(ctx, ctx.outputs.build_umd, ctx.outputs.build_es5_umd)
-        es5_umd_min_map = run_terser(ctx, ctx.outputs.build_es5_umd, ctx.outputs.build_es5_umd_min, config_name = ctx.label.name + "es5umd_min")
+        # umd_rollup_config = write_rollup_config(ctx, filename = "_%s_umd.rollup.conf.js", output_format = "umd")
+        # umd_map = run_rollup(ctx, _collect_es2015_sources(ctx), umd_rollup_config, ctx.outputs.build_umd)
+        # umd_min_map = run_terser(ctx, ctx.outputs.build_umd, ctx.outputs.build_umd_min, config_name = ctx.label.name + "umd_min", in_source_map = umd_map)
+        # _run_tsc(ctx, ctx.outputs.build_umd, ctx.outputs.build_es5_umd)
+        # es5_umd_min_map = run_terser(ctx, ctx.outputs.build_es5_umd, ctx.outputs.build_es5_umd_min, config_name = ctx.label.name + "es5umd_min")
 
-        run_sourcemapexplorer(ctx, ctx.outputs.build_es5_min, es5_min_map, ctx.outputs.explore_html)
+        # run_sourcemapexplorer(ctx, ctx.outputs.build_es5_min, es5_min_map, ctx.outputs.explore_html)
 
-        files = [ctx.outputs.build_es5_min, es5_min_map]
+        # files = [ctx.outputs.build_es5_min, es5_min_map]
         output_group = OutputGroupInfo(
-            cjs = depset([ctx.outputs.build_cjs, cjs_map]),
+            # cjs = depset([ctx.outputs.build_cjs, cjs_map]),
             es2015 = depset([ctx.outputs.build_es2015, es2015_map]),
             es2015_min = depset([ctx.outputs.build_es2015_min, es2015_min_map]),
             es2015_min_debug = depset([ctx.outputs.build_es2015_min_debug, es2015_min_debug_map]),
-            es5 = depset([ctx.outputs.build_es5]),
-            es5_min = depset([ctx.outputs.build_es5_min, es5_min_map]),
-            es5_min_debug = depset([ctx.outputs.build_es5_min_debug, es5_min_debug_map]),
-            es5_umd = depset([ctx.outputs.build_es5_umd]),
-            es5_umd_min = depset([ctx.outputs.build_es5_umd_min, es5_umd_min_map]),
-            umd = depset([ctx.outputs.build_umd, umd_map]),
-            umd_min = depset([ctx.outputs.build_umd_min, umd_min_map]),
+            # es5 = depset([ctx.outputs.build_es5]),
+            # es5_min = depset([ctx.outputs.build_es5_min, es5_min_map]),
+            # es5_min_debug = depset([ctx.outputs.build_es5_min_debug, es5_min_debug_map]),
+            # es5_umd = depset([ctx.outputs.build_es5_umd]),
+            # es5_umd_min = depset([ctx.outputs.build_es5_umd_min, es5_umd_min_map]),
+            # umd = depset([ctx.outputs.build_umd, umd_map]),
+            # umd_min = depset([ctx.outputs.build_umd_min, umd_min_map]),
         )
 
     return [
