@@ -537,7 +537,7 @@ def _rollup_bundle(ctx):
 
         # run_sourcemapexplorer(ctx, ctx.outputs.build_es5_min, es5_min_map, ctx.outputs.explore_html)
 
-        # files = [ctx.outputs.build_es5_min, es5_min_map]
+        files = [ctx.outputs.build_es2015_min, es2015_min_map]
         output_group = OutputGroupInfo(
             # cjs = depset([ctx.outputs.build_cjs, cjs_map]),
             es2015 = depset([ctx.outputs.build_es2015, es2015_map]),
