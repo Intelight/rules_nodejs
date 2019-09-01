@@ -1,5 +1,5 @@
 load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary", "rollup_bundle")
-load("@npm_bazel_jasmine//:index.from_src.bzl", "jasmine_node_test")
+# load("@npm_bazel_jasmine//:index.from_src.bzl", "jasmine_node_test")
 
 # You can have a rollup_bundle with no node_modules attribute
 # and no fine grained deps
@@ -70,17 +70,17 @@ filegroup(
     srcs = glob(["golden/**"]),
 )
 
-jasmine_node_test(
-    name = "test",
-    srcs = glob(["*.spec.js"]),
-    data = [
-        ":bundles",
-        ":check.js",
-        ":goldens",
-        "//internal/npm_install:generate_build_file",
-        "@npm//unidiff",
-    ],
-)
+# jasmine_node_test(
+#     name = "test",
+#     srcs = glob(["*.spec.js"]),
+#     data = [
+#         ":bundles",
+#         ":check.js",
+#         ":goldens",
+#         "//internal/npm_install:generate_build_file",
+#         "@npm//unidiff",
+#     ],
+# )
 
 nodejs_binary(
     name = "test.accept",

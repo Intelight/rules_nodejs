@@ -1,4 +1,4 @@
-load("@npm_bazel_jasmine//:index.from_src.bzl", "jasmine_node_test")
+# load("@npm_bazel_jasmine//:index.from_src.bzl", "jasmine_node_test")
 load("//:defs.bzl", "rollup_bundle")
 
 rollup_bundle(
@@ -14,26 +14,26 @@ rollup_bundle(
     ],
 )
 
-jasmine_node_test(
-    name = "test",
-    srcs = ["rollup.spec.js"],
-    configuration_env_vars = ["UPDATE_GOLDEN"],
-    data = glob([
-        "*_golden.js_",
-        "*_golden.js.map",
-    ]) + [
-        ":bundle",
-        ":bundle.cjs.js",
-        ":bundle.umd.js",
-        ":bundle.es5umd.js",
-        ":bundle.min.es5umd.js",
-        ":bundle.min_debug.js",
-    ],
-    deps = [
-        "//internal/e2e:check_lib",
-        "@npm//unidiff",
-    ],
-)
+# jasmine_node_test(
+#     name = "test",
+#     srcs = ["rollup.spec.js"],
+#     configuration_env_vars = ["UPDATE_GOLDEN"],
+#     data = glob([
+#         "*_golden.js_",
+#         "*_golden.js.map",
+#     ]) + [
+#         ":bundle",
+#         ":bundle.cjs.js",
+#         ":bundle.umd.js",
+#         ":bundle.es5umd.js",
+#         ":bundle.min.es5umd.js",
+#         ":bundle.min_debug.js",
+#     ],
+#     deps = [
+#         "//internal/e2e:check_lib",
+#         "@npm//unidiff",
+#     ],
+# )
 
 filegroup(
     name = "bundle-outputgroups-cjs",
@@ -83,17 +83,17 @@ filegroup(
     output_group = "es5_min_debug",
 )
 
-jasmine_node_test(
-    name = "test-outputgroups",
-    srcs = ["outputgroups.spec.js"],
-    data = [
-        ":bundle-outputgroups-cjs",
-        ":bundle-outputgroups-es2015",
-        ":bundle-outputgroups-es5_min",
-        ":bundle-outputgroups-es5_min_debug",
-        ":bundle-outputgroups-es5_umd",
-        ":bundle-outputgroups-es5_umd_min",
-        ":bundle-outputgroups-umd",
-        ":bundle-outputgroups-umd_min",
-    ],
-)
+# jasmine_node_test(
+#     name = "test-outputgroups",
+#     srcs = ["outputgroups.spec.js"],
+#     data = [
+#         ":bundle-outputgroups-cjs",
+#         ":bundle-outputgroups-es2015",
+#         ":bundle-outputgroups-es5_min",
+#         ":bundle-outputgroups-es5_min_debug",
+#         ":bundle-outputgroups-es5_umd",
+#         ":bundle-outputgroups-es5_umd_min",
+#         ":bundle-outputgroups-umd",
+#         ":bundle-outputgroups-umd_min",
+#     ],
+# )
